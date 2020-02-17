@@ -1,0 +1,58 @@
+<BugCollection sequence="0" release="" analysisTimestamp="1569872025633" version="3.1.12" timestamp="1569872023196">
+  <Project projectName="freud">
+    <Jar>/home/user/codesample/target/classes</Jar>
+    <SrcDir>/home/user/codesample/src/main/java</SrcDir>
+    <SrcDir>/home/user/codesample/target/generated-sources/annotations</SrcDir>
+    <WrkDir>/home/user/codesample/target</WrkDir>
+  </Project>
+  <BugInstance instanceOccurrenceNum="0" instanceHash="65e62c99e161660a7234c8731852dc48" rank="20" abbrev="RI" category="STYLE" priority="3" type="RI_REDUNDANT_INTERFACES" instanceOccurrenceMax="0">
+    <ShortMessage>Class implements same interface as superclass</ShortMessage>
+    <LongMessage>Class com.example.package1.SampleClass implements same interface as superclass</LongMessage>
+    <Class classname="com.example.package1.SampleClass" primary="true">
+      <SourceLine classname="com.example.package1.SampleClass" start="13" end="50" sourcepath="com/examlpe/package1/SampleClass.java" sourcefile="SampleClass.java">
+        <Message>At SampleClass.java:[lines 13-50]</Message>
+      </SourceLine>
+      <Message>In class com.example.package1.SampleClass</Message>
+    </Class>
+    <Class role="INTERFACE_TYPE" classname="com.example.package1.SampleClassTwo">
+      <SourceLine classname="com.example.package1.SampleClassTwo" start="15" end="16" sourcepath="com/examlpe/package1/SampleClassTwo.java" sourcefile="SampleClassTwo.java">
+        <Message>At SampleClassTwo.java:[lines 15-16]</Message>
+      </SourceLine>
+      <Message>Interface com.example.package1.SampleClassTwo</Message>
+    </Class>
+    <SourceLine synthetic="true" classname="com.example.package1.SampleClass" start="13" end="50" sourcepath="com/examlpe/package1/SampleClass.java" sourcefile="SampleClass.java">
+      <Message>At SampleClass.java:[lines 13-50]</Message>
+    </SourceLine>
+  </BugInstance>
+  <BugCategory category="STYLE">
+    <Description>Dodgy code</Description>
+  </BugCategory>
+  <BugPattern abbrev="RI" category="STYLE" type="RI_REDUNDANT_INTERFACES">
+    <ShortDescription>Class implements same interface as superclass</ShortDescription>
+    <Details>
+
+      &lt;p&gt;
+      This class declares that it implements an interface that is also implemented by a superclass.
+      This is redundant because once a superclass implements an interface, all subclasses by default also
+      implement this interface. It may point out that the inheritance hierarchy has changed since
+      this class was created, and consideration should be given to the ownership of
+      the interface's implementation.
+      &lt;/p&gt;
+
+    </Details>
+  </BugPattern>
+  <BugCode abbrev="RI">
+    <Description>Redundant Interfaces</Description>
+  </BugCode>
+  <Errors missingClasses="1" errors="1"></Errors>
+  <FindBugsSummary num_packages="8" total_classes="72" priority_3="1" total_size="2588" clock_seconds="3.76" referenced_classes="277" vm_version="11.0.2+9" total_bugs="0" java_version="11.0.2" gc_seconds="0.06" alloc_mbytes="512.00" cpu_seconds="17.31" peak_mbytes="273.73" timestamp="Mon, 30 Sep 2019 15:33:43 -0400">
+    <FileStats path="com/examlpe/package1/SampleClassTwo.java" size="6" bugCount="0"></FileStats>
+    <FileStats path="com/examlpe/package1/SampleClass.java" size="24" bugHash="2e08a24aede676371217d007971dcf6f" bugCount="1"></FileStats>
+    <PackageStats package="com.example.package1" total_bugs="1" priority_3="1" total_size="155" total_types="2">
+      <ClassStats bugs="0" size="6" interface="true" sourceFile="Checker.java" class="com.example.package1.SampleClassTwo"></ClassStats>
+      <ClassStats bugs="1" size="24" priority_3="1" interface="false" sourceFile="SampleClass.java" class="com.example.package1.SampleClass"></ClassStats>
+    </PackageStats>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

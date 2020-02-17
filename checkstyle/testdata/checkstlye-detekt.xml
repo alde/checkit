@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<checkstyle version="4.3">
+    <file name="/ci/wprkpace/build-1337/src/main/java/com/example/service/model/ApiResponse.kt">
+        <error line="1" column="1" severity="warning" message="The file name &apos;ApiResponse.kt&apos; does not match the name of the single top-level declaration &apos;ApiResponseDirectory&apos;." source="detekt.MatchingDeclarationName" />
+    </file>
+    <file name="/ci/wprkpace/build-1337/src/main/java/com/example/service/HealthCheck.kt">
+        <error line="42" column="11" severity="warning" message="Line detected that is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
+    </file>
+    <file name="/ci/wprkpace/build-1337/src/test/java/com/example/service/ApiHandler.kt">
+        <error line="99" column="5" severity="warning" message="Line detected that is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
+    </file>
+    <file name="/ci/wprkpace/build-1337/src/test/java/com/example/service/Configuration.kt">
+        <error line="65" column="11" severity="warning" message="Line detected that is longer than the defined maximum line length in the code style." source="detekt.MaxLineLength" />
+    </file>
+</checkstyle>

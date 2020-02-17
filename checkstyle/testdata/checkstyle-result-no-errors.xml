@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="8.4">
+  <file name="/home/user/workspace/service/Main.java"></file>
+  <file name="/home/user/workspace/service/foobar/One.java"></file>
+  <file name="/home/user/workspace/service/foobar/Two.java"></file>
+  <file name="/home/user/workspace/service/foobar/Three.java"></file>
+  <file name="/home/user/workspace/service/foobar/Four.java"></file>
+  <file name="/home/user/workspace/service/foobar/Five.java"></file>
+  <file name="/home/user/workspace/service/foobar/Six.java"></file>
+  <file name="/home/user/workspace/service/foobar/Seven.java"></file>
+  <file name="/home/user/workspace/service/foobar/Eight.java"></file>
+  <file name="/home/user/workspace/service/foobar/Nine.java"></file>
+</checkstyle>
