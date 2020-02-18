@@ -10,7 +10,7 @@ If you can convert these reports into a single format, you can analyze build rep
 ## Usage
 
 ```
-checkit -exclude testdata,fixtures -output combined-checkreport-json
+checkit -exclude testdata,fixtures -output combined-checkit.json
 ```
 
 ## Installation
