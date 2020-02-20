@@ -18,7 +18,11 @@ func main() {
 	dir := flag.String("dir", pwd, "directory to find compatible files in")
 	excludes := flag.String("exclude", "", "paths to exclude (comma-separated list strings)")
 	output := flag.String("output", "STDOUT", "file to write to (STDOUT for special case)")
+	debug := flag.Bool("debug", false, "debug output")
 	flag.Parse()
+	if *debug {
+		logrus.SetLevel(logrus.DebugLevel)
+	}
 
 	files := findFiles(*dir, strings.Split(*excludes, ","))
 
@@ -48,8 +52,9 @@ func findFiles(dir string, excludes []string) []string {
 
 	filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
 		for _, excl := range excludes {
-			if strings.Contains(path, excl) {
-				continue
+			if strings.Contains(path, excl) && excl != "" {
+				logrus.WithFields(logrus.Fields{"path": path, "exclusion": excl}).Debug("excluded path found")
+				return nil
 			}
 		}
 		files = append(files, path)
