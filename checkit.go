@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
+	"strings"
 
 	"github.com/alde/checkit/checkstyle"
 	"github.com/alde/checkit/spotbugs"
@@ -53,7 +54,7 @@ func fromSpotbugs(sb *spotbugs.Spotbugs) *Checkit {
 			}
 		}
 		cf := File{
-			Name:       sourcepath,
+			Name:       strings.Replace(sourcepath, pwd, "", 1),
 			Violations: violations,
 		}
 		files = append(files, cf)
@@ -88,7 +89,7 @@ func fromCheckstyle(cs *checkstyle.Checkstyle) *Checkit {
 			}
 			if len(violations) > 0 {
 				files = append(files, File{
-					Name:       f.Name,
+					Name:       strings.Replace(f.Name, pwd, "", 1),
 					Violations: violations,
 				})
 			}

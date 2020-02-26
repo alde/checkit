@@ -13,8 +13,11 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+var (
+	pwd, _ = os.Getwd()
+)
+
 func main() {
-	pwd, _ := os.Getwd()
 	dir := flag.String("dir", pwd, "directory to find compatible files in")
 	excludes := flag.String("exclude", "", "paths to exclude (comma-separated list of strings)")
 	output := flag.String("output", "STDOUT", "file to write to (or STDOUT)")
