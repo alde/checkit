@@ -16,8 +16,8 @@ import (
 func main() {
 	pwd, _ := os.Getwd()
 	dir := flag.String("dir", pwd, "directory to find compatible files in")
-	excludes := flag.String("exclude", "", "paths to exclude (comma-separated list strings)")
-	output := flag.String("output", "STDOUT", "file to write to (STDOUT for special case)")
+	excludes := flag.String("exclude", "", "paths to exclude (comma-separated list of strings)")
+	output := flag.String("output", "STDOUT", "file to write to (or STDOUT)")
 	debug := flag.Bool("debug", false, "debug output")
 	flag.Parse()
 	if *debug {

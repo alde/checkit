@@ -22,11 +22,14 @@ type File struct {
 
 // Violation data
 type Violation struct {
-	Line     int    `json:"line"`
-	Column   int    `json:"column"`
-	Severity string `json:"severity"`
-	Message  string `json:"message"`
-	Rule     string `json:"rule"`
+	Line      int    `json:"line"`
+	LineEnd   int    `json:"line_end"`
+	Column    int    `json:"column"`
+	ColumnEnd int    `json:"column_end"`
+	Severity  string `json:"severity"`
+	Message   string `json:"message"`
+	Rule      string `json:"rule"`
+	Reporter  string `json:"reporter"`
 }
 
 func fromSpotbugs(sb *spotbugs.Spotbugs) *Checkit {
@@ -39,9 +42,11 @@ func fromSpotbugs(sb *spotbugs.Spotbugs) *Checkit {
 			message := spotbugs.ExtractMessage(bi)
 			v := Violation{
 				Line:     sl.Start,
+				LineEnd:  sl.End,
 				Message:  message,
 				Severity: "warning",
 				Rule:     bi.Type,
+				Reporter: "spotbugs",
 			}
 			if (Violation{} != v) {
 				violations = append(violations, v)
@@ -68,11 +73,14 @@ func fromCheckstyle(cs *checkstyle.Checkstyle) *Checkit {
 			violations := []Violation{}
 			for _, e := range f.Error {
 				v := Violation{
-					Column:   e.Column,
-					Line:     e.Line,
-					Message:  e.Message,
-					Severity: e.Severity,
-					Rule:     e.Source,
+					Column:    e.Column,
+					ColumnEnd: e.Column,
+					Line:      e.Line,
+					LineEnd:   e.Line,
+					Message:   e.Message,
+					Severity:  e.Severity,
+					Rule:      e.Source,
+					Reporter:  "checkstyle",
 				}
 				if (Violation{} != v) {
 					violations = append(violations, v)
