@@ -1,4 +1,5 @@
 # Checkit
+[![Go Report Card](https://goreportcard.com/badge/github.com/alde/checkit)](https://goreportcard.com/report/github.com/alde/checkit)
 
 Combine checkstyle and spotbugs (and findbugs) reports into one json file.
 
