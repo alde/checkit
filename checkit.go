@@ -8,6 +8,7 @@ import (
 
 	"github.com/alde/checkit/checkstyle"
 	"github.com/alde/checkit/spotbugs"
+	"github.com/sirupsen/logrus"
 )
 
 // Checkit base struct
@@ -105,6 +106,13 @@ func squash(checkits ...*Checkit) *Checkit {
 
 	for _, checkit := range checkits {
 		for _, f := range checkit.Files {
+			if f.Name == "" || len(f.Violations) == 0 {
+				logrus.WithFields(logrus.Fields{
+					"name":            f.Name,
+					"violation_count": len(f.Violations),
+				}).Debug("skipping invalid file entry - no name or no violations")
+				continue
+			}
 			files = append(files, f)
 		}
 	}

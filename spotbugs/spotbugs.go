@@ -8,6 +8,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// SourceLine entry
 type SourceLine struct {
 	Classname  string `xml:"classname,attr"`
 	Start      int    `xml:"start,attr"`
@@ -17,6 +18,7 @@ type SourceLine struct {
 	Message    string `xml:"Message"`
 }
 
+// BugInstance entry
 type BugInstance struct {
 	Abbreviation string `xml:"abbrev,attr"`
 	Category     string `xml:"category,attr"`
@@ -105,6 +107,7 @@ func Process(files []string) (bugs []*Spotbugs) {
 	return
 }
 
+// ExtractMessage will try its best to find a message to associate with the Spotbugs violation.
 func ExtractMessage(bi BugInstance) string {
 	if bi.LongMessage != "" {
 		return bi.LongMessage
@@ -112,5 +115,16 @@ func ExtractMessage(bi BugInstance) string {
 	if bi.ShortMessage != "" {
 		return bi.ShortMessage
 	}
-	return bi.SourceLine[0].Message
+	firstSourceLineMessage := func(sl []SourceLine) string {
+		for _, s := range sl {
+			if s.Message != "" {
+				return s.Message
+			}
+		}
+		return ""
+	}(bi.SourceLine)
+	if firstSourceLineMessage != "" {
+		return firstSourceLineMessage
+	}
+	return "no error message found in Spotbugs XML report"
 }
