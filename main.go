@@ -54,10 +54,18 @@ func findFiles(dir string, excludes []string) []string {
 	files := []string{}
 
 	filepath.Walk(dir, func(path string, info os.FileInfo, err error) error {
+		// Don't process hidden directories
+		if info.IsDir() && strings.HasPrefix(path, fmt.Sprintf("%s/.", dir)) {
+			return filepath.SkipDir
+		}
+		// Only consider xml files
+		if !strings.HasSuffix(path, ".xml") {
+			return nil
+		}
 		for _, excl := range excludes {
 			if strings.Contains(path, excl) && excl != "" {
 				logrus.WithFields(logrus.Fields{"path": path, "exclusion": excl}).Debug("excluded path found")
-				return nil
+				return filepath.SkipDir
 			}
 		}
 		files = append(files, path)
