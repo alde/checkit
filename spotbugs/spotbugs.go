@@ -99,7 +99,10 @@ func Process(files []string) (bugs []*Spotbugs) {
 		content, _ := ioutil.ReadAll(f)
 		err = xml.Unmarshal(content, &v)
 		if err != nil {
-			logrus.WithError(err).Debug("unable to parse file as a spotbugs xml compatible file")
+			logrus.
+				WithField("file", file).
+				WithError(err).
+				Debug("unable to parse file as a spotbugs xml compatible file")
 			continue
 		}
 		bugs = append(bugs, v)
